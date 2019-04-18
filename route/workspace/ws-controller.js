@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require('../../config/db-functions');
 const bodyParser = require('body-parser')
 const bcrypt = require('bcryptjs');
+const nodeMailer = require('nodemailer'); //nodemailer
 
 router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
@@ -52,3 +53,43 @@ function define_user()
 }
 
 module.exports = router;
+
+
+///nodemailer abaixo
+//https://appdividend.com/2017/08/11/send-email-in-node-js/
+
+
+// router.get('/ws/contact/send-email', function(req,res){
+//     router.post('/ws/contact/send-email', function (req, res) {
+//         let transporter = nodeMailer.createTransport({
+//             host: 'smtp.gmail.com',
+//             port: 465,
+//             secure: true,
+//             auth: {
+//                 user: 'ppcchoice@gmail.com',
+//                 pass: '123@ppcproject'
+//             }
+//         });
+//         let mailOptions = {
+//         from: req.body.fromEmail, //'"Krunal Lathiya" <xx@gmail.com>', // sender address
+//         to: '"PPC CHOICE" <ppcchoice@gmail.com>', // list of receivers
+//         subject: req.body.subject, // Subject line
+//         text: req.body.body, // plain text body
+//         // html: '<b>NodeJS Email Tutorial</b>' // html body
+//         };
+
+//         transporter.sendMail(mailOptions, (error, info) => {
+//             if (error) {
+//                 return console.log(error);
+//             }else{
+//             console.log('Message %s sent: %s', info.messageId, info.response);
+//             // res.render( './page/ws/contact', { title: "PPC Choice - Contato", user: req.user });
+//             }
+//         });
+//     });
+
+//     // router.listen(465, function(){
+//     //     console.log('Server is running at port: ',port);
+//     // });
+
+// });
