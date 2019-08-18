@@ -187,11 +187,11 @@
                                         </div> 
                                         <div class="row">
                                             <div class="col-sm-6 text-center">
-                                                <h1 id="ppc-percent" class="display-4"></h1>
+                                                <h1 id="ppc-percent-current" class="display-4"></h1>
                                                 <br><h6> do curso atual completado </h6>
                                             </div>
                                             <div class="col-sm-6 text-center">
-                                                <h1 id="ppc-percent" class="display-4"></h1>
+                                                <h1 id="ppc-percent-target" class="display-4"></h1>
                                                 <br><h6> do curso alvo completado </h6>
                                             </div>
                                         </div>   
@@ -213,7 +213,7 @@
     google.charts.load('current', {'packages':['corechart']});
     // google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart( statistics ) 
+    function drawChart( statistics, div_name ) 
     {
       var data = google.visualization.arrayToDataTable(statistics);
       var options = {
@@ -221,7 +221,7 @@
           height: 250,
           position: 'left',
           chartArea: { left:30, width: "50%" },
-          is3D: true,
+          is3D: false,
           enableInteractivity: 'start',
           legend: 
           {
@@ -236,7 +236,7 @@
 
       };
 
-      var chart = new google.visualization.PieChart(document.getElementById('piechart-target'));
+      var chart = new google.visualization.PieChart(document.getElementById(div_name));
       chart.draw(data, options);
     }
 </script>
